@@ -10,6 +10,16 @@ Example: input: cookies = [3, 5, 8] , extraCookies = 8
  */
 
  var canGetEqualCookies = function(cookies, extraCookies) {
-     
-    
+        var cookies = cookies.sort();
+        for (var i = 0; i < cookies.length - 1; i++){
+                while (cookies[i] < cookies[cookies.length - 1]){
+                        if (extraCookies == 0){
+                                return false;
+                        }
+                        extraCookies -= 1;
+                        cookies[i] += 1;
+                }
+        }
+
+        return true;
  };

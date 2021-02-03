@@ -8,5 +8,15 @@ output: [1, 0, 1, 2]
 */
 
 var biggerAndEven = function(input) {
-
+    var sums = [];
+    for (var i=0; i < input.length; i++) {
+        var sum = 0;
+        for (var j = 0; j < input.length; j++){
+            if ((input[j] > input[i]) && (input[j] % 2 == 0)) {
+                sum += 1;
+            }
+        }
+        sums.push(sum);
+    }
+    return sums;
 };
