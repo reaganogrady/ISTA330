@@ -12,5 +12,18 @@ output: 2
 */
 
 var m_element = function(input) {
+    var m = input.length/2;
 
+    for (var i = 0; i < input.length; i++ ) {
+        var total = 1;
+        for (var j = 0; j < input.length; j ++){
+            if (input[i] == input[j] && i != j){
+                total ++;
+            }
+        }
+        if (total > m){
+            return input[i];
+        }
+    }
+    return -1;
 };
