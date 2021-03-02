@@ -22,7 +22,7 @@
         So, for example if a user clicks on the flower lily,
         then the flowers should be rearranged as:
         <br />
-        <table>
+        <table id= "flowerTB">
             <tr>
                 <td>
                     lily
@@ -83,8 +83,8 @@
         }
         let daffodil = new Flower('Daffodil', 'daffodil.png');
         let cherryblossom = new Flower('Cherry blossom', 'cherryblossom.png');
-        let lily = new Flower('Lily', 'lily.png');
-        let daisy = new Flower('Daisy', 'daisy.png');
+        let lily = new Flower('Lily', 'lily.jpg');
+        let daisy = new Flower('Daisy', 'daisy.jpg');
         let sunflower = new Flower('Sunflower', 'sunflower.png');
         let tulip = new Flower('Tulip', 'tulip.png');
         let rose = new Flower('Rose', 'rose.png');
@@ -100,6 +100,77 @@
             rose,
             waterlily
         ];
+        createTable();
+
+        function createTable() {
+            var output = document.getElementById("flowersDiv");
+            var table = document.createElement("TABLE");
+            var tblBody = document.createElement("tbody");
+
+            var row = document.createElement("TR");
+            for (var i = 0; i < flowers.length / 2; i++) {
+                var cell = document.createElement("TD");
+                var img = document.createElement("IMG");
+                img.setAttribute("src", "images/"+ flowers[i].picture);
+                img.setAttribute("name", flowers[i].name);
+                img.onclick = rotate;
+                cell.append(img);
+                row.append(cell);
+            }
+            tblBody.appendChild(row);
+
+            var row = document.createElement("TR");
+            for (var i = 0; i < flowers.length / 2; i++) {
+                var cell = document.createElement("TD");
+                var text = document.createTextNode(flowers[i].name);
+                cell.appendChild(text);
+                row.appendChild(cell);
+            }
+            tblBody.appendChild(row);
+
+            var row = document.createElement("TR");
+            for (var i = flowers.length / 2; i < flowers.length; i++) {
+                var cell = document.createElement("TD");
+                var img = document.createElement("IMG");
+                img.setAttribute("src", "images/"+ flowers[i].picture);
+                img.onclick = rotate;
+                cell.append(img);
+                row.append(cell);
+            }
+            tblBody.appendChild(row);
+
+            var row = document.createElement("TR");
+            for (var i = flowers.length / 2; i < flowers.length; i++) {
+                var cell = document.createElement("TD");
+                var text = document.createTextNode(flowers[i].name);
+                cell.appendChild(text);
+                row.appendChild(cell);
+            }
+            tblBody.appendChild(row);
+            table.appendChild(tblBody);
+
+            output.append(table);
+        }
+
+        function rotate() {
+            flowers = [
+            cherryblossom,
+            daisy,
+            daffodil,
+            lily,
+            rose,
+            sunflower,
+            tulip,
+            waterlily
+            ];
+            while (flowers[0].name != this.name) {
+                var popped = flowers.shift();
+                flowers.push(popped);
+            }
+            document.getElementById("flowersDiv").innerHTML = "";
+    
+            createTable();
+        }
     </script>
 </body>
 

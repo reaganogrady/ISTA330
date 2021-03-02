@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
     <div id="question">
@@ -15,7 +16,6 @@
         and under the image display its name.
     </div>
     <div id='flowersDiv'>
-
     </div>
     <script>
         /*
@@ -51,6 +51,51 @@
              rose,
              waterlily
        ];
+
+        var output = document.getElementById("flowersDiv");
+        var table = document.createElement("TABLE");
+        var tblBody = document.createElement("tbody");
+
+        var row = document.createElement("TR");
+        for (var i = 0; i < flowers.length / 2; i++) {
+            var cell = document.createElement("TD");
+            var img = document.createElement("IMG");
+            img.setAttribute("src", "images/"+ flowers[i].picture);
+            cell.append(img);
+            row.append(cell);
+        }
+        tblBody.appendChild(row);
+
+        var row = document.createElement("TR");
+        for (var i = 0; i < flowers.length / 2; i++) {
+           var cell = document.createElement("TD");
+           var text = document.createTextNode(flowers[i].name);
+           cell.appendChild(text);
+           row.appendChild(cell);
+        }
+        tblBody.appendChild(row);
+
+        var row = document.createElement("TR");
+        for (var i = flowers.length / 2; i < flowers.length; i++) {
+            var cell = document.createElement("TD");
+            var img = document.createElement("IMG");
+            img.setAttribute("src", "images/"+ flowers[i].picture);
+            cell.append(img);
+            row.append(cell);
+        }
+        tblBody.appendChild(row);
+
+        var row = document.createElement("TR");
+        for (var i = flowers.length / 2; i < flowers.length; i++) {
+           var cell = document.createElement("TD");
+           var text = document.createTextNode(flowers[i].name);
+           cell.appendChild(text);
+           row.appendChild(cell);
+        }
+        tblBody.appendChild(row);
+        table.appendChild(tblBody);
+
+        output.append(table);
     </script>
 </body>
 </html>
