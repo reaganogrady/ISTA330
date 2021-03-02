@@ -133,6 +133,7 @@
                 var cell = document.createElement("TD");
                 var img = document.createElement("IMG");
                 img.setAttribute("src", "images/"+ flowers[i].picture);
+                img.setAttribute("name", flowers[i].name);
                 img.onclick = rotate;
                 cell.append(img);
                 row.append(cell);
